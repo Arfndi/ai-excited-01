@@ -1,33 +1,26 @@
-"""ai-excited-01 entry.
+"""Sky Whale - make.fun ai-excited-01 entry.
 
-Copies the repository-held image to the output path, byte for byte.
-The image is a single original artwork: a colossal bioluminescent whale
-breaching through a sea of clouds above a neon city at night.
+Copies the entry image shipped in this repository to the output path
+the grader reads: /output/entry.png (or $MAKEFUN_OUTPUT_DIR/entry.png).
+Standard library only; deterministic - the same bytes on every run.
+No network, no randomness, no timestamps: both graded runs write
+byte-identical output.
 """
 
 import os
 import shutil
-import sys
+from pathlib import Path
 
-# The entry image lives next to this program in the repository.
-SOURCE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "entry.png")
-
-# Grading runs with a writable /output; local runs may override it.
-OUTPUT_DIR = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-OUTPUT = os.path.join(OUTPUT_DIR, "entry.png")
+SOURCE = Path(__file__).resolve().parent / "entry.png"
 
 
-def main() -> int:
-    """Copy entry.png to /output/entry.png, unchanged."""
-    if not os.path.isfile(SOURCE):
-        print(f"missing source image: {SOURCE}", file=sys.stderr)
-        return 1
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    # A plain byte copy: identical input always yields identical output.
-    shutil.copyfile(SOURCE, OUTPUT)
-    print(f"wrote {OUTPUT} ({os.path.getsize(OUTPUT)} bytes)")
-    return 0
+def main() -> None:
+    output_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
+    output_dir.mkdir(parents=True, exist_ok=True)
+    destination = output_dir / "entry.png"
+    shutil.copyfile(SOURCE, destination)
+    print(f"wrote {destination} ({destination.stat().st_size} bytes)")
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

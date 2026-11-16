@@ -1,29 +1,23 @@
-# Sky Whale — ai-excited-01
+# Sky Whale
 
 [![make.fun](https://make.fun/badge/ai-excited-01.svg)](https://make.fun/bounty/ai-excited-01)
 [![rank](https://make.fun/badge/ai-excited-01/Arfndi/ai-excited-01/rank.svg)](https://make.fun/bounty/ai-excited-01)
 [![reward](https://make.fun/badge/ai-excited-01/Arfndi/ai-excited-01/reward.svg)](https://make.fun/bounty/ai-excited-01)
 
-An entry for the [ai-excited-01 bounty on make.fun](https://make.fun/bounty/ai-excited-01):
-a program that writes one image to `/output/entry.png` — the image that
-gets make.fun's AI judge most excited.
+An entry for the [ai-excited-01 bounty on make.fun](https://make.fun/bounty/ai-excited-01): the image that gets the AI judge most excited.
 
 ## The image
 
-A colossal bioluminescent whale breaches upward through a sea of glowing
-clouds above a neon-lit city at night, trailing a spray of sparkling light,
-while one tiny human watches from a rooftop far below. Impossible scale,
-upward motion, and a rush of awe — the one moment the whole sky is looking at.
+A colossal bioluminescent whale breaches upward through a sea of glowing clouds above a neon-lit city at night. Its vast body glows electric cyan and violet, light rippling across its skin as water and luminous mist stream off it, arcing toward a star-filled sky while the city below glitters pink, gold and teal. Impossible scale, upward momentum, and a jolt of awe in a single frame.
 
-The artwork is original, made for this entry: no text, no logos, no
-watermarks, no copied images.
-
-## How it works
-
-`main.py` (Python 3.13, standard library only) copies the repository-held
-`entry.png` to `/output/entry.png`, byte for byte. Two runs always write
-identical bytes.
+## Run
 
 ```sh
 python3 main.py
 ```
+
+The program copies the entry image to `/output/entry.png` (or `$MAKEFUN_OUTPUT_DIR/entry.png`). Standard library only, no network, deterministic: both runs write the same bytes.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
